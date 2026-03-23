@@ -2,140 +2,523 @@
   "default": [
     {
       "question": "What is cybersecurity?",
-      "answer": "Cybersecurity is the practice of protecting systems, networks, and data from digital attacks, theft, and damage. It ensures the confidentiality, integrity, and availability of information."
+      "answer": "Cybersecurity is the practice of protecting systems, networks, applications, and data from digital attacks, unauthorized access, damage, or theft. It encompasses technologies, processes, and practices designed to defend against threats targeting computers, servers, mobile devices, and the internet."
     },
     {
-      "question": "What are the main pillars of cybersecurity?",
-      "answer": "The three main pillars are Confidentiality (protecting data from unauthorized access), Integrity (ensuring data remains accurate and unaltered), and Availability (ensuring systems and data are accessible when needed). Together, they form the CIA Triad."
+      "question": "What is the CIA triad?",
+      "answer": "The CIA Triad is the foundation of cybersecurity: Confidentiality (ensuring only authorized people access data), Integrity (ensuring data is accurate and unaltered), and Availability (ensuring systems and data are accessible when needed). Every security control maps back to at least one of these three principles."
     },
     {
       "question": "What is a vulnerability?",
-      "answer": "A vulnerability is a weakness or flaw in a system, application, or process that can be exploited by a threat actor to compromise security."
+      "answer": "A vulnerability is a weakness or flaw in a system, application, network, or process that can be exploited by a threat actor. Examples include unpatched software, weak passwords, misconfigured servers, and insecure code. Vulnerabilities are rated using CVSS scores from 0 to 10."
     },
     {
-      "question": "What is a threat and what is a risk?",
-      "answer": "A threat is any potential danger that could exploit a vulnerability, while a risk is the likelihood and potential impact of that threat occurring. Risk = Threat × Vulnerability × Impact."
+      "question": "What is a threat?",
+      "answer": "A threat is any potential danger that could exploit a vulnerability to cause harm. Threats can be natural (floods, fires), accidental (human error), or intentional (hackers, insiders). In cybersecurity, threats are typically categorized as internal or external, and targeted or opportunistic."
     },
     {
-      "question": "What is an exploit?",
-      "answer": "An exploit is a piece of code or technique that takes advantage of a vulnerability in software or hardware to gain unauthorized access or control."
+      "question": "What is risk in cybersecurity?",
+      "answer": "Risk is the likelihood that a threat will exploit a vulnerability and the impact it would cause. The formula is: Risk = Threat × Vulnerability × Impact. Risk management involves identifying, assessing, and deciding how to treat risks — through avoidance, mitigation, transfer, or acceptance."
     },
     {
-      "question": "What is malware?",
-      "answer": "Malware (malicious software) is any software intentionally designed to cause damage or unauthorized access to a system. Common types include viruses, worms, trojans, ransomware, and spyware."
+      "question": "What is an attack vector?",
+      "answer": "An attack vector is the path or method a threat actor uses to gain unauthorized access to a system. Common attack vectors include phishing emails, unpatched software, weak credentials, removable media, supply chain compromise, and misconfigured cloud services."
     },
     {
-      "question": "What is a firewall?",
-      "answer": "A firewall is a security device or software that monitors and controls incoming and outgoing network traffic based on predefined security rules. It acts as a barrier between trusted and untrusted networks."
+      "question": "What is an attack surface?",
+      "answer": "The attack surface is the total sum of all points where an attacker could try to enter or extract data from a system. This includes exposed APIs, open ports, user accounts, software dependencies, physical entry points, and third-party integrations. Reducing the attack surface is a core security principle."
     },
     {
-      "question": "What is encryption?",
-      "answer": "Encryption is the process of converting data into a coded form to prevent unauthorized access. It uses algorithms and keys to secure information during storage or transmission."
+      "question": "What is defense in depth?",
+      "answer": "Defense in depth is a layered security strategy where multiple independent security controls are stacked so that if one fails, others still protect the system. Layers typically include perimeter security, network segmentation, endpoint protection, application security, data encryption, and user access controls."
     },
     {
-      "question": "What is authentication and authorization?",
-      "answer": "Authentication verifies a user's identity (who you are), while authorization determines what resources the authenticated user is allowed to access (what you can do)."
-    },
-    {
-      "question": "What is multi-factor authentication (MFA)?",
-      "answer": "MFA adds extra layers of verification to user authentication by requiring two or more credentials — such as a password, a fingerprint, or a one-time code — before access is granted."
-    },
-    {
-      "question": "What is social engineering?",
-      "answer": "Social engineering is the manipulation of people into revealing confidential information or performing actions that compromise security. Phishing emails are a common example."
-    },
-    {
-      "question": "What is phishing?",
-      "answer": "Phishing is a form of social engineering where attackers send deceptive messages (often emails) pretending to be trusted entities to trick users into revealing sensitive information or installing malware."
-    },
-    {
-      "question": "What is penetration testing?",
-      "answer": "Penetration testing (pen-testing) is a simulated cyberattack on a system or network to identify and exploit vulnerabilities before real attackers can do so. It helps improve security posture."
-    },
-    {
-      "question": "What is ethical hacking?",
-      "answer": "Ethical hacking involves authorized security experts testing and probing systems to find vulnerabilities that malicious hackers could exploit, but with permission and for defensive purposes."
-    },
-    {
-      "question": "What is GRC in cybersecurity?",
-      "answer": "GRC stands for Governance, Risk, and Compliance. It’s a framework that helps organizations align IT operations with business goals, manage risks effectively, and ensure compliance with regulations and standards such as ISO 27001 or NIST."
-    },
-    {
-      "question": "What is network security?",
-      "answer": "Network security focuses on protecting data and resources from unauthorized access, misuse, or modification during transmission across networks using firewalls, intrusion detection systems, and encryption."
-    },
-    {
-      "question": "What is endpoint security?",
-      "answer": "Endpoint security protects individual devices such as laptops, phones, and servers from malware, data breaches, and unauthorized access using antivirus software, firewalls, and device management tools."
-    },
-    {
-      "question": "What is incident response?",
-      "answer": "Incident response is the process of detecting, investigating, and responding to cybersecurity incidents. The goal is to minimize damage, recover quickly, and prevent future attacks."
-    },
-    {
-      "question": "What is digital forensics?",
-      "answer": "Digital forensics involves collecting, analyzing, and preserving digital evidence to investigate cybercrimes and security incidents in a legally acceptable manner."
-    },
-    {
-      "question": "What is threat intelligence?",
-      "answer": "Threat intelligence is the collection and analysis of information about potential or existing cyber threats. It helps organizations anticipate, prepare for, and respond to attacks more effectively."
-    },
-    {
-      "question": "What are some cybersecurity frameworks and standards?",
-      "answer": "Common frameworks include ISO 27001, NIST Cybersecurity Framework, CIS Controls, COBIT, and PCI-DSS. They guide organizations in implementing best security practices and compliance."
-    },
-    {
-      "question": "What are some key cybersecurity specializations?",
-      "answer": "Some major areas include Network Security, Application Security, Cloud Security, Cyber Threat Intelligence, Digital Forensics, GRC, Red Teaming, Blue Teaming, and Security Architecture."
-    },
-    {
-      "question": "What is cloud security?",
-      "answer": "Cloud security ensures that data, applications, and services hosted in cloud environments are protected from unauthorized access and breaches using encryption, identity management, and monitoring tools."
-    },
-    {
-      "question": "What is DevSecOps?",
-      "answer": "DevSecOps integrates security practices into the DevOps process, ensuring security checks are automated and continuous from development through deployment."
+      "question": "What is the principle of least privilege?",
+      "answer": "The principle of least privilege means giving users, applications, and systems only the minimum access rights they need to perform their functions — nothing more. This limits the damage that can occur if an account is compromised or an insider acts maliciously."
     },
     {
       "question": "What is zero trust security?",
-      "answer": "Zero Trust is a security model that assumes no user or device should be trusted by default — even inside the network. It requires continuous verification and strict access controls."
+      "answer": "Zero Trust is a security model that operates on the principle 'never trust, always verify.' No user, device, or network segment is trusted by default — even inside the corporate network. Every access request is authenticated, authorized, and continuously validated regardless of where it originates."
+    },
+    {
+      "question": "What is malware?",
+      "answer": "Malware (malicious software) is any software intentionally designed to harm, exploit, or gain unauthorized access to systems. Types include viruses (attach to files), worms (self-replicate across networks), trojans (disguise as legitimate software), ransomware (encrypt files for ransom), spyware (steal data silently), and adware (display unwanted ads)."
     },
     {
       "question": "What is ransomware?",
-      "answer": "Ransomware is a type of malware that encrypts a victim's files and demands payment (usually in cryptocurrency) to restore access. It’s one of the most common and damaging cyber threats."
+      "answer": "Ransomware is malware that encrypts a victim's files or locks their system and demands payment — usually in cryptocurrency — to restore access. Notable examples include WannaCry, REvil, and LockBit. Prevention involves regular backups, patching, email filtering, and endpoint detection. Never pay the ransom without consulting a professional."
     },
     {
-      "question": "What are common cybersecurity tools?",
-      "answer": "Popular tools include Wireshark (network analysis), Nmap (network scanning), Metasploit (exploitation), Burp Suite (web testing), Splunk (SIEM), and Nessus (vulnerability scanning)."
+      "question": "What is phishing?",
+      "answer": "Phishing is a social engineering attack where cybercriminals send deceptive messages — typically emails — impersonating trusted entities to trick users into revealing credentials, clicking malicious links, or installing malware. Variants include spear phishing (targeted), whaling (targeting executives), smishing (SMS), and vishing (voice calls)."
     },
     {
-      "question": "What is a SIEM software?",
-      "answer": "A Security Information and Event Management (SIEM) system collects and analyzes log data from various sources in real-time to detect anomalies, threats, and compliance violations."
+      "question": "What is spear phishing?",
+      "answer": "Spear phishing is a highly targeted phishing attack customized for a specific individual or organization using personal details gathered from social media, LinkedIn, or previous data breaches. It is far more convincing than generic phishing and accounts for most successful data breaches in enterprises."
     },
     {
-      "question": "What is the difference between red, blue, and purple teams?",
-      "answer": "Red teams simulate attackers to test defenses, blue teams defend against attacks, and purple teams collaborate between the two to improve overall security effectiveness."
+      "question": "What is social engineering?",
+      "answer": "Social engineering is the psychological manipulation of people into performing actions or disclosing confidential information. It exploits human trust, fear, urgency, and authority rather than technical vulnerabilities. Common tactics include pretexting, baiting, tailgating, quid pro quo attacks, and impersonation."
     },
     {
-      "question": "What is data privacy?",
-      "answer": "Data privacy involves managing and protecting personal information according to laws and regulations like GDPR. It focuses on how data is collected, stored, used, and shared."
+      "question": "What is a man-in-the-middle attack?",
+      "answer": "A man-in-the-middle (MITM) attack occurs when an attacker secretly intercepts and potentially alters communications between two parties who believe they are communicating directly with each other. Common forms include ARP spoofing, DNS spoofing, SSL stripping, and rogue Wi-Fi access points."
     },
     {
-      "question": "What are common attack vectors?",
-      "answer": "Common attack vectors include phishing, social engineering, software vulnerabilities, weak passwords, insider threats, and misconfigured systems."
+      "question": "What is a DDoS attack?",
+      "answer": "A Distributed Denial of Service (DDoS) attack floods a target — server, network, or service — with massive amounts of traffic from multiple sources (often a botnet) to exhaust its resources and make it unavailable to legitimate users. Types include volumetric attacks, protocol attacks, and application layer attacks."
     },
     {
-      "question": "What are security patches and updates?",
-      "answer": "Security patches are updates released by software vendors to fix vulnerabilities. Regular updates are crucial to keep systems protected from known exploits."
+      "question": "What is SQL injection?",
+      "answer": "SQL injection is a web application attack where malicious SQL code is inserted into input fields to manipulate the backend database. It can allow attackers to bypass authentication, read sensitive data, modify records, or even execute commands on the server. Prevention involves parameterized queries and input validation."
     },
     {
-      "question": "What are cyber threats vs. threat actors?",
-      "answer": "Cyber threats are potential dangers like malware or phishing. Threat actors are the individuals or groups behind them — such as hackers, insiders, nation-states, or hacktivists."
+      "question": "What is cross-site scripting (XSS)?",
+      "answer": "Cross-site scripting (XSS) is a web attack where malicious scripts are injected into trusted websites and executed in a victim's browser. Stored XSS embeds the script in the database; reflected XSS delivers it via a crafted URL; DOM-based XSS manipulates the page client-side. Prevention includes output encoding and Content Security Policy headers."
     },
     {
-      "question": "What is cybersecurity awareness?",
-      "answer": "Cybersecurity awareness is training individuals to recognize and prevent cyber risks. It’s critical since human error causes most breaches."
+      "question": "What is an insider threat?",
+      "answer": "An insider threat is a security risk that originates from within an organization — employees, contractors, or partners who misuse their authorized access either maliciously (sabotage, data theft) or negligently (accidental data exposure, falling for phishing). Insider threats are among the hardest to detect and most expensive to remediate."
+    },
+    {
+      "question": "What is a zero-day vulnerability?",
+      "answer": "A zero-day vulnerability is a software flaw that is unknown to the vendor and has no available patch. Attackers who discover zero-days can exploit them before any defense exists. Zero-day exploits are highly valuable in the cybercrime underground and are also used in nation-state cyber operations."
+    },
+    {
+      "question": "What is a botnet?",
+      "answer": "A botnet is a network of internet-connected devices infected with malware and controlled remotely by a threat actor (called a botmaster or C2). Botnets are used to launch DDoS attacks, send spam, mine cryptocurrency, spread malware, and steal credentials — all without the device owners' knowledge."
+    },
+    {
+      "question": "What is an APT?",
+      "answer": "An Advanced Persistent Threat (APT) is a sophisticated, long-term cyberattack typically carried out by nation-states or well-funded criminal groups. APTs are characterized by stealth, persistence, and specific targets — usually governments, defense, critical infrastructure, or large corporations. They use custom malware and multi-stage attack chains."
+    },
+    {
+      "question": "What is a supply chain attack?",
+      "answer": "A supply chain attack targets a less-secure element in the software or hardware supply chain to compromise downstream victims. The SolarWinds attack (2020) is a prime example — attackers compromised a software update mechanism and pushed malware to thousands of organizations including US government agencies."
+    },
+    {
+      "question": "What is a firewall?",
+      "answer": "A firewall is a security system that monitors and controls incoming and outgoing network traffic based on predefined rules. Types include packet-filtering firewalls, stateful inspection firewalls, proxy firewalls, and next-generation firewalls (NGFW) which add deep packet inspection, intrusion prevention, and application awareness."
+    },
+    {
+      "question": "What is an IDS and IPS?",
+      "answer": "An Intrusion Detection System (IDS) monitors network traffic and alerts administrators to suspicious activity. An Intrusion Prevention System (IPS) goes further — it actively blocks detected threats in real time. Both use signature-based detection (known threats) and anomaly-based detection (unusual behavior patterns)."
+    },
+    {
+      "question": "What is a VPN?",
+      "answer": "A Virtual Private Network (VPN) creates an encrypted tunnel between a user's device and a server, securing data in transit and masking the user's IP address. VPNs are used for remote work security, bypassing geo-restrictions, and protecting traffic on public Wi-Fi. Corporate VPNs differ from consumer VPNs in scope and management."
+    },
+    {
+      "question": "What is network segmentation?",
+      "answer": "Network segmentation divides a network into isolated zones (segments) to limit the spread of breaches. If an attacker compromises one segment, they cannot freely move to others. Segmentation is implemented using VLANs, subnets, firewalls, and DMZs. It is a critical control for protecting sensitive systems like financial data or OT/ICS environments."
+    },
+    {
+      "question": "What is a DMZ in networking?",
+      "answer": "A DMZ (Demilitarized Zone) is a network segment that sits between the internal trusted network and the untrusted internet. It hosts public-facing services like web servers and email gateways while isolating them from internal systems. Traffic to and from the DMZ is strictly controlled by firewalls on both sides."
+    },
+    {
+      "question": "What is port scanning?",
+      "answer": "Port scanning is the process of probing a network host to discover open ports and the services running on them. It is used by attackers for reconnaissance and by defenders for auditing. Nmap is the most widely used port scanning tool. Open ports represent potential attack entry points and should be minimized and monitored."
+    },
+    {
+      "question": "What is DNS security?",
+      "answer": "DNS security involves protecting the Domain Name System from attacks like DNS spoofing (poisoning), DNS hijacking, DNS tunneling, and DDoS against DNS infrastructure. Controls include DNSSEC (cryptographic validation), DNS filtering, monitoring for unusual query patterns, and using trusted, redundant DNS resolvers."
+    },
+    {
+      "question": "What is SSL and TLS?",
+      "answer": "SSL (Secure Sockets Layer) and its successor TLS (Transport Layer Security) are cryptographic protocols that provide secure, encrypted communication over a network. TLS is used to secure HTTPS web traffic, email, VoIP, and more. SSL is deprecated and insecure — modern systems should use TLS 1.2 or TLS 1.3 minimum."
+    },
+    {
+      "question": "What is endpoint security?",
+      "answer": "Endpoint security protects individual devices — laptops, desktops, mobile phones, servers — from malware, unauthorized access, and data breaches. Modern endpoint security platforms (EPP/EDR) combine antivirus, behavioral detection, device control, encryption, and threat hunting into a unified agent."
+    },
+    {
+      "question": "What is EDR?",
+      "answer": "Endpoint Detection and Response (EDR) is a cybersecurity technology that continuously monitors endpoint devices for suspicious activity, records detailed telemetry, detects threats using behavioral analysis, and enables rapid investigation and response. Leading EDR tools include CrowdStrike Falcon, Microsoft Defender for Endpoint, and SentinelOne."
+    },
+    {
+      "question": "What is application security?",
+      "answer": "Application security (AppSec) encompasses practices that protect software applications from threats throughout their lifecycle — design, development, testing, deployment, and maintenance. Key practices include secure coding standards, code reviews, SAST/DAST testing, dependency scanning, and runtime application self-protection (RASP)."
+    },
+    {
+      "question": "What is OWASP?",
+      "answer": "The Open Web Application Security Project (OWASP) is a nonprofit organization that publishes free resources on web application security. The OWASP Top 10 is the most recognized list of critical web application security risks, updated regularly. It currently includes injection, broken authentication, IDOR, security misconfiguration, and vulnerable components."
+    },
+    {
+      "question": "What is patch management?",
+      "answer": "Patch management is the systematic process of identifying, testing, and applying software updates (patches) to fix vulnerabilities, bugs, and performance issues. Unpatched systems are one of the leading causes of breaches. An effective patch management program prioritizes critical patches, tests in staging environments, and tracks compliance."
+    },
+    {
+      "question": "What is mobile security?",
+      "answer": "Mobile security protects smartphones and tablets from threats including malicious apps, unsecured Wi-Fi, phishing via SMS, physical theft, and data leakage through apps. Controls include Mobile Device Management (MDM), app vetting, screen lock enforcement, remote wipe capability, and encrypted storage."
+    },
+    {
+      "question": "What is IAM?",
+      "answer": "Identity and Access Management (IAM) is a framework of policies and technologies that ensures the right people have appropriate access to the right resources at the right time. Core IAM components include authentication, authorization, single sign-on (SSO), multi-factor authentication (MFA), and privileged access management (PAM)."
+    },
+    {
+      "question": "What is multi-factor authentication?",
+      "answer": "Multi-Factor Authentication (MFA) requires users to provide two or more verification factors to access a system — typically something you know (password), something you have (authenticator app or hardware token), and something you are (biometrics). MFA blocks over 99% of automated credential-based attacks."
+    },
+    {
+      "question": "What is privileged access management?",
+      "answer": "Privileged Access Management (PAM) controls and monitors access by privileged accounts — administrators, root users, service accounts — that have elevated permissions. PAM solutions vault credentials, enforce just-in-time access, record privileged sessions, and alert on anomalous privileged behavior."
+    },
+    {
+      "question": "What is single sign-on?",
+      "answer": "Single Sign-On (SSO) allows users to authenticate once and gain access to multiple applications without re-entering credentials. SSO improves user experience, reduces password fatigue, and centralizes access control. It is implemented using protocols like SAML, OAuth 2.0, and OpenID Connect."
+    },
+    {
+      "question": "What is OAuth?",
+      "answer": "OAuth (Open Authorization) is an open standard protocol that allows applications to access resources on behalf of a user without exposing their credentials. When you click 'Log in with Google,' OAuth is handling that. OAuth 2.0 is the current standard and powers authorization flows across thousands of modern applications."
+    },
+    {
+      "question": "What is encryption?",
+      "answer": "Encryption converts readable data (plaintext) into an unreadable format (ciphertext) using an algorithm and key. Only authorized parties with the correct key can decrypt it. Encryption protects data at rest (stored files, databases) and data in transit (network communications). Common algorithms include AES, RSA, and ChaCha20."
+    },
+    {
+      "question": "What is symmetric vs asymmetric encryption?",
+      "answer": "Symmetric encryption uses the same key for encryption and decryption (e.g., AES) — fast but requires secure key exchange. Asymmetric encryption uses a public key to encrypt and a private key to decrypt (e.g., RSA, ECC) — slower but solves the key distribution problem. Most modern systems use both: asymmetric for key exchange, symmetric for bulk data."
+    },
+    {
+      "question": "What is a digital certificate?",
+      "answer": "A digital certificate is an electronic document that uses a digital signature to bind a public key to an entity's identity (person, organization, or device). Certificates are issued by Certificate Authorities (CAs) and are the foundation of HTTPS, code signing, and email encryption (S/MIME). The X.509 standard defines the certificate format."
+    },
+    {
+      "question": "What is PKI?",
+      "answer": "Public Key Infrastructure (PKI) is a system of hardware, software, policies, and procedures used to create, manage, distribute, and revoke digital certificates. PKI enables secure email, HTTPS, code signing, and VPNs. It relies on Certificate Authorities (CAs), Registration Authorities (RAs), and certificate revocation mechanisms."
+    },
+    {
+      "question": "What is hashing?",
+      "answer": "Hashing is a one-way cryptographic function that converts data of any size into a fixed-length string (hash or digest). Unlike encryption, hashing cannot be reversed. It is used for password storage, data integrity verification, and digital signatures. Common algorithms include SHA-256, SHA-3, and bcrypt (for passwords)."
+    },
+    {
+      "question": "What is cloud security?",
+      "answer": "Cloud security encompasses controls, policies, and technologies protecting cloud-based systems, data, and infrastructure. Key concerns include misconfiguration (the leading cause of cloud breaches), identity management, data encryption, insecure APIs, and shared responsibility — where the cloud provider secures the infrastructure and the customer secures their data and configurations."
+    },
+    {
+      "question": "What is the shared responsibility model?",
+      "answer": "The shared responsibility model defines the security obligations split between a cloud provider and the customer. The provider secures the physical infrastructure, hypervisor, and core services. The customer is responsible for their data, user access, application configuration, network settings, and operating systems (in IaaS). Misunderstanding this boundary causes many cloud breaches."
+    },
+    {
+      "question": "What is CSPM?",
+      "answer": "Cloud Security Posture Management (CSPM) tools automatically scan cloud environments for misconfigurations, policy violations, and compliance gaps. They provide visibility across multi-cloud environments, enforce security baselines, and alert on risky settings like publicly exposed S3 buckets, overly permissive IAM roles, or unencrypted databases."
+    },
+    {
+      "question": "What is CASB?",
+      "answer": "A Cloud Access Security Broker (CASB) is a security policy enforcement point between cloud service users and providers. CASBs provide visibility into cloud app usage (including shadow IT), enforce data loss prevention policies, detect anomalous user behavior, and ensure compliance with regulations like GDPR and HIPAA in cloud environments."
+    },
+    {
+      "question": "What is DevSecOps?",
+      "answer": "DevSecOps integrates security practices into the DevOps pipeline, shifting security left — meaning security checks happen early in development rather than at the end. It involves automated security testing in CI/CD pipelines, developer security training, infrastructure-as-code scanning, container security, and continuous compliance monitoring."
+    },
+    {
+      "question": "What is container security?",
+      "answer": "Container security protects containerized applications (like Docker and Kubernetes) throughout their lifecycle. It covers securing container images (scanning for vulnerabilities), hardening container runtime configurations, enforcing network policies between containers, managing secrets, and monitoring for runtime anomalies in Kubernetes clusters."
+    },
+    {
+      "question": "What is GRC?",
+      "answer": "GRC stands for Governance, Risk, and Compliance. Governance defines the policies, roles, and decision-making frameworks for managing IT and security. Risk management identifies and mitigates threats to business objectives. Compliance ensures adherence to laws, regulations, and standards. GRC brings these three disciplines together as an integrated program."
+    },
+    {
+      "question": "What is ISO 27001?",
+      "answer": "ISO/IEC 27001 is the international standard for Information Security Management Systems (ISMS). It provides a framework for establishing, implementing, maintaining, and continually improving information security. Organizations can become certified by an accredited body. It covers risk management, security controls, policies, and continual improvement through 93 controls in Annex A."
+    },
+    {
+      "question": "What is NIST Cybersecurity Framework?",
+      "answer": "The NIST Cybersecurity Framework (CSF) is a voluntary framework developed by the US National Institute of Standards and Technology. It organizes security activities into five core functions: Identify, Protect, Detect, Respond, and Recover. CSF 2.0 adds Govern as a sixth function. It is widely adopted globally as a risk-based approach to managing cybersecurity."
+    },
+    {
+      "question": "What is GDPR?",
+      "answer": "The General Data Protection Regulation (GDPR) is a European Union law governing the collection, processing, and storage of personal data of EU residents. Key requirements include lawful basis for processing, data subject rights (access, deletion, portability), breach notification within 72 hours, Data Protection Officers (DPOs), and privacy by design. Non-compliance can result in fines up to 4% of global annual revenue."
+    },
+    {
+      "question": "What is a security policy?",
+      "answer": "A security policy is a formal document that defines an organization's security objectives, rules, responsibilities, and acceptable use of information assets. Types include information security policy, acceptable use policy (AUP), access control policy, incident response policy, and password policy. Policies form the foundation of any security program."
+    },
+    {
+      "question": "What is a risk assessment?",
+      "answer": "A risk assessment is a systematic process of identifying assets, threats, vulnerabilities, and the likelihood and impact of potential security incidents. It produces a risk register that prioritizes risks for treatment. Common methodologies include NIST SP 800-30, ISO 27005, OCTAVE, and FAIR (quantitative risk analysis)."
+    },
+    {
+      "question": "What is a BCP and DRP?",
+      "answer": "A Business Continuity Plan (BCP) ensures critical business functions continue during and after a disaster. A Disaster Recovery Plan (DRP) focuses specifically on restoring IT systems and data. Together they define RTO (Recovery Time Objective — how fast to recover) and RPO (Recovery Point Objective — how much data loss is acceptable)."
+    },
+    {
+      "question": "What is ISO 42001?",
+      "answer": "ISO/IEC 42001 is the international standard for Artificial Intelligence Management Systems (AIMS). Published in 2023, it provides a framework for organizations developing or using AI to govern AI responsibly — covering risk management, transparency, accountability, data quality, and continual improvement. It is the AI equivalent of ISO 27001 for information security."
+    },
+    {
+      "question": "What is a SOC?",
+      "answer": "A Security Operations Center (SOC) is a centralized team and facility that monitors, detects, analyzes, and responds to cybersecurity incidents 24/7. A SOC uses SIEM tools, threat intelligence, and playbooks to investigate alerts. SOC analysts are tiered (L1/L2/L3) based on their ability to handle increasingly complex incidents."
+    },
+    {
+      "question": "What is a SIEM?",
+      "answer": "A Security Information and Event Management (SIEM) system collects, aggregates, and analyzes log data from across an organization's infrastructure in real time to detect threats, investigate incidents, and support compliance. Leading SIEMs include Splunk, Microsoft Sentinel, IBM QRadar, and Elastic SIEM. Modern SIEMs increasingly incorporate UEBA and SOAR capabilities."
+    },
+    {
+      "question": "What is SOAR?",
+      "answer": "Security Orchestration, Automation, and Response (SOAR) platforms automate repetitive SOC tasks and coordinate responses across multiple security tools. SOAR uses playbooks to automatically investigate alerts, enrich indicators of compromise, isolate infected endpoints, and notify teams — dramatically reducing mean time to respond (MTTR)."
+    },
+    {
+      "question": "What is threat hunting?",
+      "answer": "Threat hunting is a proactive security practice where analysts actively search for hidden threats and attacker activity that has evaded automated detection. Unlike reactive incident response, threat hunters use hypotheses, threat intelligence, and behavioral analytics to uncover advanced threats dwelling inside networks — sometimes for months."
+    },
+    {
+      "question": "What is incident response?",
+      "answer": "Incident response (IR) is the structured process for detecting, containing, eradicating, and recovering from cybersecurity incidents. The NIST IR lifecycle has four phases: Preparation, Detection & Analysis, Containment/Eradication/Recovery, and Post-Incident Activity (lessons learned). Having a tested IR plan significantly reduces breach costs and recovery time."
+    },
+    {
+      "question": "What is digital forensics?",
+      "answer": "Digital forensics is the science of collecting, preserving, analyzing, and presenting digital evidence in a legally admissible manner. It is used in incident investigations, litigation, and law enforcement. Subdisciplines include network forensics, memory forensics, mobile forensics, and malware analysis. Chain of custody is critical for evidence integrity."
+    },
+    {
+      "question": "What is threat intelligence?",
+      "answer": "Threat intelligence (TI) is processed, contextualized information about existing or emerging threats that helps organizations make informed security decisions. It includes tactical intelligence (IOCs like malicious IPs), operational intelligence (attacker TTPs), and strategic intelligence (threat landscape trends). STIX/TAXII are common standards for sharing threat intelligence."
+    },
+    {
+      "question": "What are IOCs?",
+      "answer": "Indicators of Compromise (IOCs) are forensic artifacts or evidence that suggest a system has been breached or infected. Examples include malicious IP addresses, suspicious domain names, file hashes of malware, unusual registry keys, and anomalous outbound network connections. IOCs are shared across organizations via threat intelligence platforms."
+    },
+    {
+      "question": "What is the MITRE ATT&CK framework?",
+      "answer": "MITRE ATT&CK is a globally accessible knowledge base of adversary tactics and techniques based on real-world observations. It organizes attacker behavior into 14 tactics (e.g., Initial Access, Lateral Movement, Exfiltration) and hundreds of specific techniques. Security teams use it for threat modeling, red team planning, SOC detection coverage mapping, and incident investigation."
+    },
+    {
+      "question": "What is penetration testing?",
+      "answer": "Penetration testing (pen testing) is an authorized simulated cyberattack on systems to identify exploitable vulnerabilities before real attackers do. Types include black box (no prior knowledge), white box (full knowledge), and grey box (partial knowledge). Pen test phases: reconnaissance, scanning, exploitation, post-exploitation, and reporting."
+    },
+    {
+      "question": "What is ethical hacking?",
+      "answer": "Ethical hacking involves authorized security professionals using the same tools and techniques as malicious hackers to find and fix vulnerabilities. Ethical hackers (also called white hat hackers) operate under a defined scope with written permission and report findings responsibly. The CEH and OSCP are popular ethical hacking certifications."
+    },
+    {
+      "question": "What is red teaming?",
+      "answer": "Red teaming is a full-scope, adversarial simulation where a team of security experts emulates a real-world attacker targeting an organization over an extended period. Unlike pen testing (which finds vulnerabilities), red team exercises test the entire security program — people, processes, and technology — and the blue team's ability to detect and respond."
+    },
+    {
+      "question": "What is blue teaming?",
+      "answer": "Blue teaming refers to the internal security team responsible for defending an organization's systems and responding to attacks. Blue teamers manage SIEMs, analyze alerts, conduct threat hunting, harden systems, and respond to incidents. In purple team exercises, red and blue teams collaborate to improve detection and defense capabilities together."
+    },
+    {
+      "question": "What is vulnerability scanning?",
+      "answer": "Vulnerability scanning uses automated tools to scan systems for known vulnerabilities, misconfigurations, and missing patches. Scanners like Nessus, Qualys, and OpenVAS compare discovered system details against vulnerability databases. Scanning should be run regularly, and results should be prioritized by CVSS score and business criticality."
+    },
+    {
+      "question": "What is Metasploit?",
+      "answer": "Metasploit is the world's most widely used open-source penetration testing framework. It provides a library of exploits, payloads, and auxiliary modules for testing vulnerabilities in systems and applications. Metasploit is used by ethical hackers for authorized security assessments and is a core tool in any penetration tester's toolkit."
+    },
+    {
+      "question": "What is Kali Linux?",
+      "answer": "Kali Linux is a Debian-based Linux distribution designed specifically for penetration testing, digital forensics, and security research. It comes pre-installed with hundreds of security tools including Nmap, Metasploit, Burp Suite, Wireshark, Aircrack-ng, and John the Ripper. It is the standard operating system for ethical hackers and security professionals."
+    },
+    {
+      "question": "What is artificial intelligence?",
+      "answer": "Artificial Intelligence (AI) is the simulation of human intelligence processes by machines — including learning from data, reasoning to solve problems, and self-correction. AI encompasses subfields including machine learning, deep learning, natural language processing, computer vision, and robotics. Modern AI is primarily driven by large datasets and computational power."
+    },
+    {
+      "question": "What is machine learning?",
+      "answer": "Machine learning (ML) is a subset of AI where systems learn patterns from data without being explicitly programmed. Instead of following fixed rules, ML models are trained on examples and improve with experience. Types include supervised learning (labeled data), unsupervised learning (finding patterns), and reinforcement learning (learning from feedback/rewards)."
+    },
+    {
+      "question": "What is deep learning?",
+      "answer": "Deep learning is a subset of machine learning using artificial neural networks with many layers (hence 'deep'). It excels at tasks like image recognition, speech recognition, language translation, and generating content. Deep learning powers technologies like ChatGPT, image generators, facial recognition, and autonomous vehicles."
+    },
+    {
+      "question": "What is a large language model?",
+      "answer": "A Large Language Model (LLM) is a deep learning model trained on massive amounts of text data to understand and generate human language. LLMs like GPT-4, Claude, Gemini, and LLaMA can write code, answer questions, summarize documents, translate languages, and hold conversations. They are the foundation of modern AI assistants and chatbots."
+    },
+    {
+      "question": "What is generative AI?",
+      "answer": "Generative AI refers to AI systems that can generate new content — text, images, audio, video, and code — based on training data and user prompts. Notable systems include ChatGPT and Claude (text), DALL-E and Midjourney (images), Sora (video), and GitHub Copilot (code). Generative AI is rapidly transforming industries from healthcare to software development."
+    },
+    {
+      "question": "What is a neural network?",
+      "answer": "A neural network is a computing system loosely inspired by the human brain, consisting of interconnected nodes (neurons) organized in layers. Data flows through input layers, hidden layers (where learning happens), and output layers. Neural networks learn by adjusting the weights of connections during training to minimize prediction errors."
+    },
+    {
+      "question": "What is natural language processing?",
+      "answer": "Natural Language Processing (NLP) is the AI field focused on enabling computers to understand, interpret, and generate human language. NLP powers chatbots, voice assistants, sentiment analysis, language translation, text summarization, and spam filters. Transformer architecture (introduced in 2017) revolutionized NLP and underpins all modern LLMs."
+    },
+    {
+      "question": "What is computer vision?",
+      "answer": "Computer vision is the AI field that enables machines to interpret and understand visual information from images and videos. Applications include facial recognition, autonomous vehicles, medical image analysis, quality control in manufacturing, security surveillance, and document processing (OCR). Convolutional Neural Networks (CNNs) are the core architecture for most computer vision tasks."
+    },
+    {
+      "question": "What is reinforcement learning?",
+      "answer": "Reinforcement learning (RL) is a machine learning paradigm where an agent learns to make decisions by interacting with an environment, receiving rewards for good actions and penalties for bad ones. RL powers game-playing AI (AlphaGo, AlphaStar), robotics control, recommendation systems, and increasingly, fine-tuning of LLMs through RLHF (Reinforcement Learning from Human Feedback)."
+    },
+    {
+      "question": "What is transfer learning?",
+      "answer": "Transfer learning is a machine learning technique where a model trained on one task is reused as the starting point for a different but related task. Instead of training from scratch, the pre-trained model's knowledge is transferred and fine-tuned on new data. This dramatically reduces training time and data requirements — it's how most modern AI applications are built."
+    },
+    {
+      "question": "How is AI used in cybersecurity?",
+      "answer": "AI is transforming cybersecurity by enabling faster and more accurate threat detection, behavioral anomaly detection, automated incident response, vulnerability prioritization, phishing detection, malware analysis, and user entity behavior analytics (UEBA). AI helps security teams handle the massive volume of alerts and data that humans alone cannot process effectively."
+    },
+    {
+      "question": "What is AI-powered threat detection?",
+      "answer": "AI-powered threat detection uses machine learning models to analyze network traffic, user behavior, system logs, and endpoint telemetry to identify threats that signature-based tools miss. Instead of matching known patterns, AI models detect anomalies — unusual login times, abnormal data transfers, lateral movement — that indicate attacker behavior."
+    },
+    {
+      "question": "What is UEBA?",
+      "answer": "User and Entity Behavior Analytics (UEBA) uses machine learning to establish baselines of normal behavior for users and devices, then alerts when behavior deviates significantly. It is particularly effective at detecting insider threats, compromised accounts, and data exfiltration. UEBA is now built into most modern SIEM platforms."
+    },
+    {
+      "question": "How are attackers using AI?",
+      "answer": "Attackers are leveraging AI to create more convincing deepfake audio and video for social engineering, generate personalized phishing emails at scale, automate vulnerability discovery, create polymorphic malware that evades detection, and bypass CAPTCHA. AI lowers the skill barrier for cybercrime and dramatically increases the scale and sophistication of attacks."
+    },
+    {
+      "question": "What are AI security risks?",
+      "answer": "Key AI security risks include adversarial attacks (crafted inputs that fool AI models), data poisoning (corrupting training data), model theft (extracting proprietary models), prompt injection (manipulating LLM behavior through inputs), hallucinations (AI generating false information), and privacy leakage (models inadvertently memorizing sensitive training data)."
+    },
+    {
+      "question": "What is prompt injection?",
+      "answer": "Prompt injection is an attack against AI systems where malicious instructions are hidden in user inputs or external content to override the AI's intended behavior. It is the equivalent of SQL injection but for LLMs. For example, a document processed by an AI assistant could contain hidden instructions to exfiltrate data or bypass safety controls."
+    },
+    {
+      "question": "What is AI governance?",
+      "answer": "AI governance refers to the frameworks, policies, and processes organizations use to ensure AI systems are developed and deployed responsibly, safely, and ethically. It covers model risk management, bias detection, explainability, data privacy, accountability, and regulatory compliance. ISO 42001 and the EU AI Act are key governance frameworks."
+    },
+    {
+      "question": "What is the EU AI Act?",
+      "answer": "The EU AI Act is the world's first comprehensive legal framework regulating artificial intelligence. It classifies AI systems by risk level: unacceptable risk (banned), high risk (strict requirements), limited risk (transparency obligations), and minimal risk (no specific requirements). High-risk AI in areas like biometrics, critical infrastructure, and employment faces stringent compliance requirements."
+    },
+    {
+      "question": "What is explainable AI?",
+      "answer": "Explainable AI (XAI) refers to AI systems whose decisions and outputs can be understood and interpreted by humans. Unlike black-box models, XAI techniques (like SHAP values, LIME, and attention visualization) reveal why a model made a specific decision. Explainability is critical for trust, regulatory compliance, and identifying AI bias in high-stakes domains."
+    },
+    {
+      "question": "What is AI bias?",
+      "answer": "AI bias occurs when an AI system produces systematically unfair or discriminatory outcomes, usually because the training data reflects historical biases or is unrepresentative. AI bias can lead to discrimination in hiring, lending, criminal justice, and healthcare. Detecting and mitigating bias requires diverse training data, rigorous testing, and continuous monitoring."
+    },
+    {
+      "question": "What is business process automation?",
+      "answer": "Business Process Automation (BPA) uses technology to perform repetitive, rule-based tasks with minimal human intervention — such as data entry, invoice processing, employee onboarding, and report generation. BPA reduces errors, cuts costs, and frees employees for higher-value work. Tools include Zapier, Make (Integromat), Microsoft Power Automate, and custom APIs."
+    },
+    {
+      "question": "What is RPA?",
+      "answer": "Robotic Process Automation (RPA) uses software robots (bots) to mimic human interactions with digital systems — clicking buttons, filling forms, copying data between applications — without changing underlying systems. RPA is ideal for automating legacy processes without APIs. Leading platforms include UiPath, Automation Anywhere, and Blue Prism."
+    },
+    {
+      "question": "What is intelligent automation?",
+      "answer": "Intelligent automation combines RPA with AI capabilities like machine learning, NLP, and computer vision to automate more complex, judgment-intensive tasks. Unlike basic RPA (rule-based), intelligent automation can handle unstructured data, make decisions, learn from outcomes, and adapt to changes — automating entire end-to-end business processes."
+    },
+    {
+      "question": "What is hyperautomation?",
+      "answer": "Hyperautomation is the strategic, rapid adoption of multiple automation technologies — RPA, AI, ML, process mining, and low-code platforms — to automate as many business processes as possible. Gartner coined the term and named it a top strategic technology trend. The goal is to create a digital twin of the organization for continuous optimization."
+    },
+    {
+      "question": "What is an API?",
+      "answer": "An Application Programming Interface (API) is a set of rules and protocols that allows different software applications to communicate with each other. APIs are the backbone of modern automation — they enable systems to exchange data and trigger actions programmatically. REST, GraphQL, and SOAP are common API architectures."
+    },
+    {
+      "question": "What is a webhook?",
+      "answer": "A webhook is an HTTP callback that triggers an automated action when a specific event occurs in one system, sending real-time data to another system. Unlike APIs (where you poll for data), webhooks push data automatically when events happen — making them ideal for automation workflows, notifications, and integrations between SaaS platforms."
+    },
+    {
+      "question": "What is low-code and no-code automation?",
+      "answer": "Low-code and no-code platforms allow users to build applications and automations with minimal or no traditional programming. No-code tools (Zapier, Airtable, Notion automations) require zero coding. Low-code tools (OutSystems, Mendix, Power Apps) allow developers to build faster with visual interfaces plus code for complex logic. Both democratize automation for non-technical users."
+    },
+    {
+      "question": "What is workflow automation?",
+      "answer": "Workflow automation uses software to route tasks, information, and approvals through a defined process automatically, reducing manual handoffs and delays. Examples include automatically routing support tickets to the right team, sending follow-up emails after form submissions, syncing data between CRM and accounting systems, and automated employee onboarding checklists."
+    },
+    {
+      "question": "What is CI/CD?",
+      "answer": "Continuous Integration and Continuous Delivery/Deployment (CI/CD) is a software development automation practice where code changes are automatically built, tested, and deployed. CI ensures code is regularly merged and tested. CD automates deployment to staging or production. CI/CD pipelines using tools like GitHub Actions, Jenkins, and GitLab CI dramatically accelerate software delivery."
+    },
+    {
+      "question": "What is infrastructure as code?",
+      "answer": "Infrastructure as Code (IaC) is the practice of managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. Tools like Terraform, Ansible, and Pulumi allow teams to automate infrastructure deployment, ensure consistency, version-control infrastructure changes, and reduce configuration drift."
+    },
+    {
+      "question": "What is a chatbot?",
+      "answer": "A chatbot is an automated software application that simulates conversation with users via text or voice. Rule-based chatbots follow decision trees; AI chatbots use NLP and machine learning to understand intent and generate responses. Chatbots are used for customer support, lead generation, FAQ answering, appointment booking, and internal helpdesks."
+    },
+    {
+      "question": "What is an AI agent?",
+      "answer": "An AI agent is an autonomous AI system that perceives its environment, makes decisions, and takes actions to achieve goals — often across multiple steps without constant human direction. AI agents can browse the web, write and execute code, manage files, call APIs, and chain multiple tools together. They represent the next evolution beyond simple chatbots."
+    },
+    {
+      "question": "What is agentic AI?",
+      "answer": "Agentic AI refers to AI systems that operate autonomously with goal-directed behavior, planning multi-step actions, using tools, and adapting based on outcomes. Unlike a chatbot that responds to prompts, an agentic AI can be given a high-level objective and figure out how to accomplish it — including researching, writing, coding, and communicating on your behalf."
+    },
+    {
+      "question": "What is process mining?",
+      "answer": "Process mining analyzes event logs from business systems (ERP, CRM, BPM) to automatically discover, monitor, and improve real business processes. It reveals how processes actually execute versus how they are designed to work — exposing bottlenecks, deviations, and automation opportunities. It is a powerful discovery tool before implementing RPA or workflow automation."
+    },
+    {
+      "question": "What is security automation?",
+      "answer": "Security automation uses technology to perform security tasks with minimal human intervention — including alert triage, threat intelligence enrichment, vulnerability scanning, compliance checks, and incident response actions. Automation reduces response time from hours to seconds, eliminates repetitive manual work, and allows security teams to focus on complex investigations."
+    },
+    {
+      "question": "What is automated incident response?",
+      "answer": "Automated incident response uses SOAR platforms and playbooks to automatically execute response actions when threats are detected — isolating compromised endpoints, blocking malicious IPs, resetting compromised accounts, and notifying the right teams. Automation dramatically reduces mean time to contain (MTTC) and limits damage from active attacks."
+    },
+    {
+      "question": "What is AI-driven vulnerability management?",
+      "answer": "AI-driven vulnerability management goes beyond scanning to intelligently prioritize vulnerabilities based on exploitability, asset criticality, threat intelligence, and business context. Instead of treating all vulnerabilities equally, AI models predict which vulnerabilities are most likely to be exploited in your environment, allowing teams to focus remediation efforts where they matter most."
+    },
+    {
+      "question": "What is security orchestration?",
+      "answer": "Security orchestration connects and coordinates disparate security tools, systems, and teams into unified workflows. It enables automated data sharing and action-taking across endpoint, network, cloud, and identity tools. SOAR platforms provide the orchestration layer that integrates your security stack and enables consistent, automated responses to incidents."
+    },
+    {
+      "question": "What is quantum computing and its impact on security?",
+      "answer": "Quantum computers use quantum mechanical phenomena to perform certain calculations exponentially faster than classical computers. Their biggest security implication is their ability to break current asymmetric encryption (RSA, ECC) — a threat known as 'harvest now, decrypt later.' NIST has standardized post-quantum cryptographic algorithms (CRYSTALS-Kyber, CRYSTALS-Dilithium) to prepare for this threat."
+    },
+    {
+      "question": "What is blockchain?",
+      "answer": "Blockchain is a distributed, decentralized ledger that records transactions across multiple nodes in a chain of cryptographically linked blocks. Once recorded, data cannot be altered without changing all subsequent blocks and gaining network consensus. Beyond cryptocurrency, blockchain is used for supply chain transparency, smart contracts, digital identity, and tamper-proof audit logs."
+    },
+    {
+      "question": "What is IoT security?",
+      "answer": "IoT (Internet of Things) security protects internet-connected devices — smart cameras, industrial sensors, medical devices, smart home gadgets — which often have weak default credentials, no update mechanisms, and limited security capabilities. IoT devices are frequently compromised to build botnets. Security controls include network segmentation, firmware updates, and device authentication."
+    },
+    {
+      "question": "What is OT security?",
+      "answer": "Operational Technology (OT) security protects industrial control systems (ICS), SCADA systems, and critical infrastructure like power grids, water treatment, and manufacturing. OT environments prioritize availability over confidentiality, use legacy systems that can't be easily patched, and a cyberattack can have physical consequences. IT/OT convergence is creating new security challenges."
+    },
+    {
+      "question": "What is edge computing?",
+      "answer": "Edge computing processes data closer to where it is generated — on devices, local servers, or regional data centers — rather than sending everything to a central cloud. This reduces latency, bandwidth usage, and cloud dependency. Security challenges include securing distributed edge nodes, managing updates across many devices, and protecting data processed outside the corporate perimeter."
+    },
+    {
+      "question": "What is Web3?",
+      "answer": "Web3 refers to a vision of a decentralized internet built on blockchain technology, where users own their data and digital assets rather than platforms. Key components include decentralized applications (dApps), smart contracts, DAOs (decentralized autonomous organizations), NFTs, and DeFi (decentralized finance). Security risks include smart contract vulnerabilities, private key theft, and rug pulls."
+    },
+    {
+      "question": "What is DeFi?",
+      "answer": "Decentralized Finance (DeFi) refers to financial services — lending, trading, earning interest — built on blockchain networks using smart contracts, eliminating traditional intermediaries like banks. DeFi protocols have been targets of major hacks due to smart contract vulnerabilities, flash loan attacks, and oracle manipulation. Over $3 billion was lost to DeFi exploits in 2022 alone."
+    },
+    {
+      "question": "What is a smart contract?",
+      "answer": "A smart contract is self-executing code stored on a blockchain that automatically enforces the terms of an agreement when predefined conditions are met. They eliminate intermediaries and automate trustless transactions. However, smart contract bugs are irreversible and have led to hundreds of millions in losses — making smart contract auditing a critical security practice."
+    },
+    {
+      "question": "What certifications are recommended for cybersecurity?",
+      "answer": "Key certifications by level: Entry — CompTIA Security+, Google Cybersecurity Certificate. Intermediate — CEH (Certified Ethical Hacker), CCNA Security, CySA+. Advanced — CISSP (management/architecture), OSCP (hands-on pen testing), CISM (management), ISO 27001 Lead Implementer (governance), CISA (auditing). Specialised — AWS Security Specialty, GCFE (forensics), GREM (malware analysis)."
+    },
+    {
+      "question": "What cybersecurity roles are in demand?",
+      "answer": "High-demand cybersecurity roles include Security Analyst (SOC), Penetration Tester, Cloud Security Engineer, Security Architect, GRC Analyst, Threat Intelligence Analyst, Incident Responder, DevSecOps Engineer, CISO, and AI Security Specialist. The global cybersecurity workforce gap exceeds 4 million professionals, making it one of the most in-demand career fields."
+    },
+    {
+      "question": "What is a CISO?",
+      "answer": "A Chief Information Security Officer (CISO) is the senior executive responsible for an organization's information security strategy, program, and team. The CISO aligns security with business objectives, manages risk, ensures regulatory compliance, reports to the board, and leads incident response at the executive level. It is the highest cybersecurity leadership role in an organization."
+    },
+    {
+      "question": "What skills do I need for cybersecurity?",
+      "answer": "Core technical skills: networking fundamentals, operating systems (Linux/Windows), scripting (Python, Bash), log analysis, and understanding of security tools (SIEM, firewalls, EDR). Core soft skills: analytical thinking, communication (writing reports, briefing executives), and continuous learning. Specializations like cloud, AI, or GRC require additional domain knowledge."
+    },
+    {
+      "question": "What is Cyber Execs Network?",
+      "answer": "Cyber Execs Network is a Nigerian cybersecurity community platform focused on education, professional development, and collaboration for cybersecurity practitioners and executives. It provides learning resources, industry connections, and practical training to build cybersecurity capacity across Nigeria and Africa. The network bridges the gap between cybersecurity knowledge and real-world practice."
+    },
+    {
+      "question": "What services does Caseer offer?",
+      "answer": "Caseer Technology provides cybersecurity services, AI automation solutions, and technology consultancy for businesses. Services include cybersecurity risk assessments, ISO 27001 and ISO 42001 implementation support, AI-powered business automation, chatbot development, and security awareness training. Caseer targets tech firms, retail, and SMEs looking to strengthen their security posture and automate operations."
     }
   ]
 }
-
