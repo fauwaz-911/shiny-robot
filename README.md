@@ -1,6 +1,5 @@
 # Cyber Execs AI Chatbot — v2.0
 
-ID - 0d19a810dc2f27f9302ef25b4fd21ad4
 FAQ-first hybrid chatbot. Uses fuzzy matching to answer from your knowledge base first.
 Only calls AI when no match is found. Logs everything to a database.
 
