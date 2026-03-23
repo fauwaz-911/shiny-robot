@@ -106,7 +106,12 @@ chat_logs = Table(
     Column("timestamp", DateTime, default=datetime.utcnow),
 )
 
-metadata_db.create_all(engine)
+try:
+    metadata_db.create_all(engine)
+    print("[DB] Tables created/verified OK")
+except Exception as e:
+    print(f"[DB WARNING] Could not connect at startup: {e}")
+    print("[DB WARNING] App will still start. Fix DATABASE_URL to enable logging.")
 SessionLocal = sessionmaker(bind=engine)
 
 def log_to_db(
