@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: cyber-execs-chatbot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false         # set manually in Render dashboard
+      - key: OPENROUTER_MODEL
+        value: meta-llama/llama-3-8b-instruct
+      - key: MATCH_THRESHOLD
+        value: "72"
+      - key: MAX_HISTORY_TURNS
+        value: "6"
+      - key: ADMIN_SECRET
+        sync: false         # set manually in Render dashboard
+      - key: BOT_NAME
+        value: "Cyber Execs AI Assistant"
+      - key: FAQ_FILE
+        value: "cyber_data.json"
+      # Uncomment and set DATABASE_URL for PostgreSQL (recommended for production):
+      # - key: DATABASE_URL
+      #   sync: false

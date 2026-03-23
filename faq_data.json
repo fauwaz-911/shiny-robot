@@ -1,0 +1,17 @@
+{
+  "default": [
+    {
+      "question": "What are your opening hours?",
+      "answer": "We are open Monday to Friday, 9:00 AM – 5:00 PM."
+    },
+    {
+      "question": "Where is your office located?",
+      "answer": "Our office is at No. 12 Adeola Street, Lagos."
+    },
+    {
+      "question": "How can I contact support?",
+      "answer": "You can email support@cyberexecs.com or call +234-800-000-0000."
+    }
+  ]
+}
+

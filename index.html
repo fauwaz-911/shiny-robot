@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Execs — AI Chatbot Widget</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0a0e1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      color: #8b949e;
+      font-size: 14px;
+    }
+    .demo-note {
+      text-align: center;
+      padding: 2rem;
+      border: 1px dashed #30363d;
+      border-radius: 12px;
+      max-width: 360px;
+    }
+    .demo-note span {
+      color: #00ff88;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-note">
+    <p>Click the <span>💬</span> button<br />in the bottom-right corner.</p>
+    <p style="margin-top:1rem; font-size:11px;">
+      Embed this widget on any website by adding<br />
+      <code style="color:#74b9ff">style.css</code> + <code style="color:#74b9ff">script.js</code> +
+      the widget HTML to your page.
+    </p>
+  </div>
+
+  <!-- ── CHATBOT WIDGET ── -->
+  <div id="chat-button">💬</div>
+
+  <div id="chat-popup" class="hidden">
+    <div id="chat-header">
+      <div class="header-dot"></div>
+      <div class="header-title">Cyber Execs Assistant</div>
+      <div class="header-sub">● Online</div>
+    </div>
+    <div id="chat-box"></div>
+    <div id="chat-input-container">
+      <input id="user-input" type="text" placeholder="Ask me anything…" autocomplete="off" />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <!-- Optional: override API URL and client_id before loading script.js -->
+  <!-- <script>window.CHATBOT_API_URL = "https://your-render-app.onrender.com/chat";</script> -->
+  <!-- <script>window.CHATBOT_CLIENT_ID = "your_client_id";</script> -->
+  <script src="script.js"></script>
+</body>
+</html>

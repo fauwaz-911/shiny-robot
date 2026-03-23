@@ -1,0 +1,141 @@
+{
+  "default": [
+    {
+      "question": "What is cybersecurity?",
+      "answer": "Cybersecurity is the practice of protecting systems, networks, and data from digital attacks, theft, and damage. It ensures the confidentiality, integrity, and availability of information."
+    },
+    {
+      "question": "What are the main pillars of cybersecurity?",
+      "answer": "The three main pillars are Confidentiality (protecting data from unauthorized access), Integrity (ensuring data remains accurate and unaltered), and Availability (ensuring systems and data are accessible when needed). Together, they form the CIA Triad."
+    },
+    {
+      "question": "What is a vulnerability?",
+      "answer": "A vulnerability is a weakness or flaw in a system, application, or process that can be exploited by a threat actor to compromise security."
+    },
+    {
+      "question": "What is a threat and what is a risk?",
+      "answer": "A threat is any potential danger that could exploit a vulnerability, while a risk is the likelihood and potential impact of that threat occurring. Risk = Threat × Vulnerability × Impact."
+    },
+    {
+      "question": "What is an exploit?",
+      "answer": "An exploit is a piece of code or technique that takes advantage of a vulnerability in software or hardware to gain unauthorized access or control."
+    },
+    {
+      "question": "What is malware?",
+      "answer": "Malware (malicious software) is any software intentionally designed to cause damage or unauthorized access to a system. Common types include viruses, worms, trojans, ransomware, and spyware."
+    },
+    {
+      "question": "What is a firewall?",
+      "answer": "A firewall is a security device or software that monitors and controls incoming and outgoing network traffic based on predefined security rules. It acts as a barrier between trusted and untrusted networks."
+    },
+    {
+      "question": "What is encryption?",
+      "answer": "Encryption is the process of converting data into a coded form to prevent unauthorized access. It uses algorithms and keys to secure information during storage or transmission."
+    },
+    {
+      "question": "What is authentication and authorization?",
+      "answer": "Authentication verifies a user's identity (who you are), while authorization determines what resources the authenticated user is allowed to access (what you can do)."
+    },
+    {
+      "question": "What is multi-factor authentication (MFA)?",
+      "answer": "MFA adds extra layers of verification to user authentication by requiring two or more credentials — such as a password, a fingerprint, or a one-time code — before access is granted."
+    },
+    {
+      "question": "What is social engineering?",
+      "answer": "Social engineering is the manipulation of people into revealing confidential information or performing actions that compromise security. Phishing emails are a common example."
+    },
+    {
+      "question": "What is phishing?",
+      "answer": "Phishing is a form of social engineering where attackers send deceptive messages (often emails) pretending to be trusted entities to trick users into revealing sensitive information or installing malware."
+    },
+    {
+      "question": "What is penetration testing?",
+      "answer": "Penetration testing (pen-testing) is a simulated cyberattack on a system or network to identify and exploit vulnerabilities before real attackers can do so. It helps improve security posture."
+    },
+    {
+      "question": "What is ethical hacking?",
+      "answer": "Ethical hacking involves authorized security experts testing and probing systems to find vulnerabilities that malicious hackers could exploit, but with permission and for defensive purposes."
+    },
+    {
+      "question": "What is GRC in cybersecurity?",
+      "answer": "GRC stands for Governance, Risk, and Compliance. It’s a framework that helps organizations align IT operations with business goals, manage risks effectively, and ensure compliance with regulations and standards such as ISO 27001 or NIST."
+    },
+    {
+      "question": "What is network security?",
+      "answer": "Network security focuses on protecting data and resources from unauthorized access, misuse, or modification during transmission across networks using firewalls, intrusion detection systems, and encryption."
+    },
+    {
+      "question": "What is endpoint security?",
+      "answer": "Endpoint security protects individual devices such as laptops, phones, and servers from malware, data breaches, and unauthorized access using antivirus software, firewalls, and device management tools."
+    },
+    {
+      "question": "What is incident response?",
+      "answer": "Incident response is the process of detecting, investigating, and responding to cybersecurity incidents. The goal is to minimize damage, recover quickly, and prevent future attacks."
+    },
+    {
+      "question": "What is digital forensics?",
+      "answer": "Digital forensics involves collecting, analyzing, and preserving digital evidence to investigate cybercrimes and security incidents in a legally acceptable manner."
+    },
+    {
+      "question": "What is threat intelligence?",
+      "answer": "Threat intelligence is the collection and analysis of information about potential or existing cyber threats. It helps organizations anticipate, prepare for, and respond to attacks more effectively."
+    },
+    {
+      "question": "What are some cybersecurity frameworks and standards?",
+      "answer": "Common frameworks include ISO 27001, NIST Cybersecurity Framework, CIS Controls, COBIT, and PCI-DSS. They guide organizations in implementing best security practices and compliance."
+    },
+    {
+      "question": "What are some key cybersecurity specializations?",
+      "answer": "Some major areas include Network Security, Application Security, Cloud Security, Cyber Threat Intelligence, Digital Forensics, GRC, Red Teaming, Blue Teaming, and Security Architecture."
+    },
+    {
+      "question": "What is cloud security?",
+      "answer": "Cloud security ensures that data, applications, and services hosted in cloud environments are protected from unauthorized access and breaches using encryption, identity management, and monitoring tools."
+    },
+    {
+      "question": "What is DevSecOps?",
+      "answer": "DevSecOps integrates security practices into the DevOps process, ensuring security checks are automated and continuous from development through deployment."
+    },
+    {
+      "question": "What is zero trust security?",
+      "answer": "Zero Trust is a security model that assumes no user or device should be trusted by default — even inside the network. It requires continuous verification and strict access controls."
+    },
+    {
+      "question": "What is ransomware?",
+      "answer": "Ransomware is a type of malware that encrypts a victim's files and demands payment (usually in cryptocurrency) to restore access. It’s one of the most common and damaging cyber threats."
+    },
+    {
+      "question": "What are common cybersecurity tools?",
+      "answer": "Popular tools include Wireshark (network analysis), Nmap (network scanning), Metasploit (exploitation), Burp Suite (web testing), Splunk (SIEM), and Nessus (vulnerability scanning)."
+    },
+    {
+      "question": "What is a SIEM software?",
+      "answer": "A Security Information and Event Management (SIEM) system collects and analyzes log data from various sources in real-time to detect anomalies, threats, and compliance violations."
+    },
+    {
+      "question": "What is the difference between red, blue, and purple teams?",
+      "answer": "Red teams simulate attackers to test defenses, blue teams defend against attacks, and purple teams collaborate between the two to improve overall security effectiveness."
+    },
+    {
+      "question": "What is data privacy?",
+      "answer": "Data privacy involves managing and protecting personal information according to laws and regulations like GDPR. It focuses on how data is collected, stored, used, and shared."
+    },
+    {
+      "question": "What are common attack vectors?",
+      "answer": "Common attack vectors include phishing, social engineering, software vulnerabilities, weak passwords, insider threats, and misconfigured systems."
+    },
+    {
+      "question": "What are security patches and updates?",
+      "answer": "Security patches are updates released by software vendors to fix vulnerabilities. Regular updates are crucial to keep systems protected from known exploits."
+    },
+    {
+      "question": "What are cyber threats vs. threat actors?",
+      "answer": "Cyber threats are potential dangers like malware or phishing. Threat actors are the individuals or groups behind them — such as hackers, insiders, nation-states, or hacktivists."
+    },
+    {
+      "question": "What is cybersecurity awareness?",
+      "answer": "Cybersecurity awareness is training individuals to recognize and prevent cyber risks. It’s critical since human error causes most breaches."
+    }
+  ]
+}
+
