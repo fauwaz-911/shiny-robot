@@ -28,7 +28,6 @@ from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
 
-from fastapi.staticfiles import StaticFiles
 import httpx
 from dotenv import load_dotenv, find_dotenv
 from fastapi import FastAPI, HTTPException, Query
@@ -442,12 +441,18 @@ def admin_stats(secret: str = Query(...)):
             "faq_hits": faq_count,
             "ai_fallbacks": ai_count,
             "faq_hit_rate": f"{(faq_count / total * 100):.1f}%" if total else "N/A",
-
-app.mount("/static", StaticFiles(directory="."), name="static")
-
-@app.get("/")
-def serve_chat():
-    return FileResponse("chat.html")
         }
     finally:
         db.close()
+
+# --------------------------------------------------
+# STATIC FILES + CHAT INTERFACE
+# --------------------------------------------------
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+@app.get("/")
+def serve_index():
+    return FileResponse("chat.html")
+
+app.mount("/static", StaticFiles(directory="."), name="static")
