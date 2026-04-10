@@ -513,6 +513,27 @@
       "answer": "Core technical skills: networking fundamentals, operating systems (Linux/Windows), scripting (Python, Bash), log analysis, and understanding of security tools (SIEM, firewalls, EDR). Core soft skills: analytical thinking, communication (writing reports, briefing executives), and continuous learning. Specializations like cloud, AI, or GRC require additional domain knowledge."
     },
     {
+      "question": "What is caseer?",
+      "answer": "CASEER is being built as a tech and services company focused on solving business problems with cybersecurity, AI automation, and digital products. The direction is not just “a tech brand,” but a company that can eventually generate revenue through services, systems, and scalable products.
+
+The core vision
+The long-term goal is to build a company that:
+
+provides real value to businesses, especially SMEs and tech firms,
+earns through services first,
+then grows into products and platforms,
+and eventually becomes a serious tech business with multiple income streams.
+
+The main areas CASEER is targeting
+These are the main lanes currently in play:
+
+Cybersecurity services: security analysis, penetration testing, endpoint security, purple-team style support, awareness, and consulting.
+AI automation systems: AI customer support, business workflow automation, assistant tools, and client-facing automation services.
+Web / digital products: websites, platforms, dashboards, and business tools.
+Consultancy / strategy: helping businesses understand risk, systems, growth, and operations.
+Possible future product expansion: social commerce, business tools, and other scalable tech products.."
+    },
+    {
       "question": "What is Cyber Execs Network?",
       "answer": "Cyber Execs Network is a Nigerian cybersecurity community platform focused on education, professional development, and collaboration for cybersecurity practitioners and executives. It provides learning resources, industry connections, and practical training to build cybersecurity capacity across Nigeria and Africa. The network bridges the gap between cybersecurity knowledge and real-world practice."
     },
