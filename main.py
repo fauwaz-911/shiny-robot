@@ -1,21 +1,13 @@
 """
 Caseer / Cyber Execs AI Chatbot — Backend
-Version 2.1 — Security & Accuracy Enhanced
+Version 2.1.0
 
 Architecture:
   User message
     → rapidfuzz FAQ match  (fast, free, accurate)
     → if no match → AI fallback (OpenRouter)
 
-Upgrades from v2.0:
-  - Enhanced matching algorithm (token_sort_ratio + keyword extraction)
-  - CORS restriction for production security
-  - Rate limiting (50 requests/minute per IP)
-  - Input validation (max message length, sanitization)
-  - Raised match threshold to 76 for better accuracy
-  - Multi-scorer ensemble matching for edge cases
-
-Previous upgrades (v1 → v2.0):
+Upgrades from v1:
   - Pydantic v2 compatible
   - rapidfuzz replaces difflib (much better fuzzy matching)
   - Conversation memory per session (last N turns sent to AI)
@@ -31,19 +23,19 @@ import os
 import json
 import time
 import asyncio
-import re
-from typing import Optional, List, Dict, Set
+from typing import Optional, List, Dict
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 from collections import defaultdict
 
+import re
 import httpx
 from dotenv import load_dotenv, find_dotenv
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from pydantic import BaseModel, ConfigDict, field_validator, Field
+from pydantic import BaseModel, ConfigDict
 from rapidfuzz import fuzz, process
 from sqlalchemy import (
     create_engine, Column, Integer, String,
@@ -59,7 +51,7 @@ load_dotenv(env_path, override=True)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_MODEL   = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3-8b-instruct")
-MATCH_THRESHOLD    = float(os.getenv("MATCH_THRESHOLD", "76"))   # Raised from 72 to 76 for better accuracy
+MATCH_THRESHOLD    = float(os.getenv("MATCH_THRESHOLD", "72"))   # 0–100 scale (rapidfuzz)
 MAX_HISTORY_TURNS  = int(os.getenv("MAX_HISTORY_TURNS", "6"))    # pairs of user/bot kept per session
 ADMIN_SECRET       = os.getenv("ADMIN_SECRET", "changeme")       # basic admin gate
 FAQ_FILE           = os.getenv("FAQ_FILE", "cyber_data.json")
@@ -71,90 +63,22 @@ SYSTEM_PROMPT      = os.getenv(
     "If a question is outside cybersecurity, politely redirect."
 )
 
-# Security settings
-ALLOWED_ORIGINS    = os.getenv("ALLOWED_ORIGINS", "").split(",") if os.getenv("ALLOWED_ORIGINS") else ["*"]
-RATE_LIMIT_REQUESTS = int(os.getenv("RATE_LIMIT_REQUESTS", "50"))  # requests per minute
-RATE_LIMIT_WINDOW  = int(os.getenv("RATE_LIMIT_WINDOW", "60"))     # window in seconds
-MAX_MESSAGE_LENGTH = int(os.getenv("MAX_MESSAGE_LENGTH", "1000"))  # max chars per message
-
 print(f"[BOOT] Model: {OPENROUTER_MODEL}")
 print(f"[BOOT] FAQ file: {FAQ_FILE}")
 print(f"[BOOT] Match threshold: {MATCH_THRESHOLD}")
-print(f"[BOOT] CORS origins: {ALLOWED_ORIGINS}")
-print(f"[BOOT] Rate limit: {RATE_LIMIT_REQUESTS} req/{RATE_LIMIT_WINDOW}s")
+print(f"[BOOT] Matcher: v2.1 (keyword-ensemble, no WRatio)")
 
 # --------------------------------------------------
 # APP
 # --------------------------------------------------
 app = FastAPI(title="Cyber Execs Chatbot API", version="2.1.0")
 
-# CORS Configuration - Restrict in production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,  # Set via ALLOWED_ORIGINS env var
-    allow_credentials=True,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "Authorization"],
+    allow_origins=["*"],   # tighten this to your domain in production
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-
-# --------------------------------------------------
-# RATE LIMITING
-# --------------------------------------------------
-# Simple in-memory rate limiter (IP-based)
-# For production, consider Redis-based rate limiting
-rate_limit_store: Dict[str, List[float]] = defaultdict(list)
-
-def get_client_ip(request: Request) -> str:
-    """Extract client IP from request, handling proxies."""
-    forwarded = request.headers.get("X-Forwarded-For")
-    if forwarded:
-        return forwarded.split(",")[0].strip()
-    return request.client.host if request.client else "unknown"
-
-def check_rate_limit(ip: str) -> bool:
-    """
-    Check if IP has exceeded rate limit.
-    Returns True if allowed, False if rate limited.
-    """
-    now = time.time()
-    window_start = now - RATE_LIMIT_WINDOW
-    
-    # Remove old entries outside the time window
-    rate_limit_store[ip] = [
-        timestamp for timestamp in rate_limit_store[ip]
-        if timestamp > window_start
-    ]
-    
-    # Check if under limit
-    if len(rate_limit_store[ip]) >= RATE_LIMIT_REQUESTS:
-        return False
-    
-    # Add current request
-    rate_limit_store[ip].append(now)
-    return True
-
-# Cleanup old entries every 5 minutes
-async def cleanup_rate_limiter():
-    """Background task to cleanup old rate limit entries."""
-    while True:
-        await asyncio.sleep(300)  # 5 minutes
-        now = time.time()
-        cutoff = now - (RATE_LIMIT_WINDOW * 2)
-        
-        # Remove IPs with no recent activity
-        to_remove = [
-            ip for ip, timestamps in rate_limit_store.items()
-            if not timestamps or max(timestamps) < cutoff
-        ]
-        for ip in to_remove:
-            del rate_limit_store[ip]
-        
-        print(f"[RATE LIMIT] Cleaned up {len(to_remove)} inactive IPs")
-
-# Start cleanup task on startup
-@app.on_event("startup")
-async def startup_event():
-    asyncio.create_task(cleanup_rate_limiter())
 
 # --------------------------------------------------
 # DATABASE
@@ -243,90 +167,153 @@ for client_id, entries in FAQ_DATA.items():
 print(f"[FAQ] Loaded clients: {list(FAQ_INDEX.keys())}")
 
 
-def extract_keywords(text: str) -> Set[str]:
-    """
-    Extract significant keywords from a question.
-    Removes common words and extracts meaningful terms.
-    """
-    # Common stopwords to ignore
-    stopwords = {
-        "what", "is", "are", "the", "a", "an", "in", "on", "at", "to", "for",
-        "of", "and", "or", "but", "with", "from", "about", "how", "do", "does",
-        "can", "could", "should", "would", "will", "me", "you", "i", "we", "they"
-    }
-    
-    # Clean and tokenize
-    words = re.findall(r'\b\w+\b', text.lower())
-    keywords = {w for w in words if len(w) > 2 and w not in stopwords}
-    
+# --------------------------------------------------
+# MATCHING — CONSTANTS
+# --------------------------------------------------
+_STOPWORDS = {
+    "what","is","are","a","an","the","tell","me","about","explain",
+    "how","does","do","to","i","get","into","can","you","please",
+    "describe","define","give","overview","of","in","for","and",
+    "its","it","was","be","been","being","with","that","this",
+    "work","works","use","used","using","should","some","any",
+}
+
+# Expand common acronyms so "MFA" finds "multi-factor authentication"
+_ACRONYM_MAP = {
+    "mfa":  "multi-factor authentication",
+    "iam":  "identity access management",
+    "soc":  "security operations center",
+    "siem": "security information event management",
+    "edr":  "endpoint detection response",
+    "rpa":  "robotic process automation",
+    "iot":  "internet of things",
+    "vpn":  "virtual private network",
+    "ids":  "intrusion detection system",
+    "ips":  "intrusion prevention system",
+    "dmz":  "demilitarized zone",
+    "pki":  "public key infrastructure",
+    "apt":  "advanced persistent threat",
+    "ioc":  "indicators of compromise",
+    "xss":  "cross site scripting",
+    "ddos": "distributed denial of service",
+    "mitm": "man in the middle",
+    "grc":  "governance risk compliance",
+    "bcp":  "business continuity plan",
+    "drp":  "disaster recovery plan",
+    "ueba": "user entity behavior analytics",
+    "soar": "security orchestration automation response",
+    "cspm": "cloud security posture management",
+    "casb": "cloud access security broker",
+    "xdr":  "extended detection response",
+    "ztna": "zero trust network access",
+    "nlp":  "natural language processing",
+    "llm":  "large language model",
+    "rpa":  "robotic process automation",
+    "bpa":  "business process automation",
+    "ai":   "artificial intelligence",
+    "ml":   "machine learning",
+    "dl":   "deep learning",
+}
+
+
+def _word_match(keyword: str, text: str) -> bool:
+    """Whole-word boundary check — prevents 'ai' matching 'chain'."""
+    return bool(re.search(r'\b' + re.escape(keyword) + r'\b', text, re.IGNORECASE))
+
+
+def _extract_keywords(msg: str) -> list:
+    """Extract meaningful keywords; keep uppercase acronyms regardless of length."""
+    words = msg.strip().split()
+    keywords = []
+    for w in words:
+        clean = w.lower().rstrip('?.,!')
+        orig  = w.rstrip('?.,!')
+        if clean not in _STOPWORDS and (len(clean) > 2 or orig.isupper()):
+            # Expand known acronyms so matching works even without them in FAQ questions
+            keywords.append(_ACRONYM_MAP.get(clean, clean))
     return keywords
+
 
 def find_best_faq(client_id: str, message: str):
     """
-    Enhanced FAQ matching with multiple strategies:
-    1. Keyword extraction for short queries
-    2. token_sort_ratio for word-level matching
-    3. Ensemble scoring for edge cases
-    
+    Three-layer FAQ matching — v2.1.0
+    Replaces single WRatio scorer which caused false positives and missed paraphrases.
+
+    Layer 1: Keyword scoring with word-boundary matching + acronym expansion
+    Layer 2: Ensemble of token_sort + partial + token_set (WRatio excluded)
+    Layer 3: Threshold gate
+
     Returns (answer, matched_question, score) or (None, None, 0).
     Score is 0–100.
     """
     qa_map = FAQ_INDEX.get(client_id) or FAQ_INDEX.get("default", {})
     if not qa_map:
         return None, None, 0.0
-    
-    message_clean = message.strip()
-    message_keywords = extract_keywords(message_clean)
-    
-    # Strategy 1: For short queries (< 6 words), require keyword overlap
-    word_count = len(message_clean.split())
-    if word_count <= 5 and message_keywords:
-        # Filter questions that contain at least one keyword
-        keyword_matches = {}
-        for question in qa_map.keys():
-            question_keywords = extract_keywords(question)
-            overlap = message_keywords & question_keywords
-            if overlap:
-                keyword_matches[question] = len(overlap)
-        
-        # If we have keyword matches, only search within those
-        search_pool = list(keyword_matches.keys()) if keyword_matches else qa_map.keys()
-    else:
-        search_pool = qa_map.keys()
-    
-    if not search_pool:
+
+    msg      = message.strip()
+    msg_low  = msg.lower()
+    keywords = _extract_keywords(msg)
+
+    # ── LAYER 1: Keyword scoring ──────────────────────────
+    if keywords:
+        candidates: Dict[str, float] = {}
+        for q in qa_map.keys():
+            q_low = q.lower()
+            kw_scores = []
+            for kw in keywords:
+                if _word_match(kw, q_low):
+                    kw_scores.append(95)          # exact whole-word match
+                elif len(kw) > 4:
+                    # Partial match only for longer terms (avoids short acronym pollution)
+                    kw_scores.append(fuzz.partial_ratio(kw, q_low))
+                else:
+                    kw_scores.append(0)
+
+            if not kw_scores or max(kw_scores) == 0:
+                continue
+
+            best_kw     = max(kw_scores)
+            avg_kw      = sum(kw_scores) / len(kw_scores)
+            multi_bonus = 8 * min(sum(1 for s in kw_scores if s >= 80), 3)
+            candidates[q] = best_kw * 0.55 + avg_kw * 0.45 + multi_bonus
+
+        if candidates:
+            best_q     = max(candidates, key=candidates.get)
+            best_score = candidates[best_q]
+            if best_score >= 58:
+                validation = fuzz.partial_ratio(msg_low, best_q.lower())
+                if validation >= 45:
+                    return qa_map[best_q], best_q, min(best_score, 98.0)
+
+    # ── LAYER 2: Ensemble fuzzy matching ─────────────────
+    # Deliberately excludes WRatio — it inflates scores via internal max() and
+    # causes false positives on short queries and proper nouns.
+    r_ts  = process.extractOne(msg, qa_map.keys(), scorer=fuzz.token_sort_ratio)
+    r_pr  = process.extractOne(msg, qa_map.keys(), scorer=fuzz.partial_ratio)
+    r_tsr = process.extractOne(msg, qa_map.keys(), scorer=fuzz.token_set_ratio)
+
+    vote_scores: Dict[str, float] = {}
+    for r in [r_ts, r_pr, r_tsr]:
+        if r:
+            q, s, _ = r
+            vote_scores[q] = vote_scores.get(q, 0) + s
+
+    if not vote_scores:
         return None, None, 0.0
-    
-    # Strategy 2: Use token_sort_ratio for primary scoring
-    # This is better at handling word reordering and focuses on whole words
-    result = process.extractOne(
-        message_clean,
-        search_pool,
-        scorer=fuzz.token_sort_ratio,  # Better for word-level matching
-    )
-    
-    if result is None:
-        return None, None, 0.0
-    
-    matched_question, primary_score, _ = result
-    
-    # Strategy 3: Ensemble scoring - use multiple algorithms for confidence
-    # Calculate secondary score with WRatio for validation
-    secondary_score = fuzz.WRatio(message_clean, matched_question)
-    
-    # Use average of both scores for final decision
-    # This reduces false positives from either algorithm alone
-    final_score = (primary_score * 0.7) + (secondary_score * 0.3)
-    
-    # Log matching details for debugging
-    print(f"[FAQ MATCH] Query: '{message_clean[:50]}...' | "
-          f"Matched: '{matched_question[:50]}...' | "
-          f"Score: {final_score:.1f} (token_sort: {primary_score}, WRatio: {secondary_score})")
-    
-    if final_score >= MATCH_THRESHOLD:
-        return qa_map[matched_question], matched_question, final_score
-    
-    return None, None, final_score
+
+    best_q    = max(vote_scores, key=vote_scores.get)
+    s_ts      = fuzz.token_sort_ratio(msg, best_q)
+    s_pr      = fuzz.partial_ratio(msg, best_q)
+    s_tsr     = fuzz.token_set_ratio(msg, best_q)
+    ensemble  = (s_ts * 0.4) + (s_pr * 0.35) + (s_tsr * 0.25)
+
+    # Extra gate: reject if the full query has poor overlap with matched question
+    # This catches off-topic queries that slip through via substring coincidences
+    full_validation = fuzz.partial_ratio(msg_low, best_q.lower())
+    if ensemble >= MATCH_THRESHOLD and full_validation >= 65:
+        return qa_map[best_q], best_q, ensemble
+
+    return None, None, ensemble
 
 
 # --------------------------------------------------
@@ -401,42 +388,9 @@ class ChatRequest(BaseModel):
         }
     })
 
-    message: str = Field(..., min_length=1, max_length=MAX_MESSAGE_LENGTH)
-    client_id: Optional[str] = Field(default="default", max_length=128)
-    session_id: Optional[str] = Field(default="anonymous", max_length=128)
-    
-    @field_validator("message")
-    @classmethod
-    def validate_message(cls, v: str) -> str:
-        """Validate and sanitize message input."""
-        # Strip whitespace
-        v = v.strip()
-        
-        # Check for empty after stripping
-        if not v:
-            raise ValueError("Message cannot be empty")
-        
-        # Check for excessive whitespace or suspicious patterns
-        if len(v) != len(" ".join(v.split())):
-            v = " ".join(v.split())  # Normalize whitespace
-        
-        # Basic XSS prevention - remove HTML tags
-        v = re.sub(r'<[^>]+>', '', v)
-        
-        return v
-    
-    @field_validator("client_id", "session_id")
-    @classmethod
-    def validate_ids(cls, v: Optional[str]) -> str:
-        """Validate ID fields - alphanumeric, dash, underscore only."""
-        if v is None:
-            return "default" if cls.__name__ == "client_id" else "anonymous"
-        
-        # Only allow safe characters
-        if not re.match(r'^[a-zA-Z0-9_-]+$', v):
-            raise ValueError("ID must contain only alphanumeric characters, dashes, and underscores")
-        
-        return v
+    message: str
+    client_id: Optional[str] = "default"
+    session_id: Optional[str] = "anonymous"
 
 
 class ChatResponse(BaseModel):
@@ -469,15 +423,7 @@ def health():
 
 
 @app.post("/chat", response_model=ChatResponse)
-async def chat(req: ChatRequest, request: Request):
-    # Rate limiting check
-    client_ip = get_client_ip(request)
-    if not check_rate_limit(client_ip):
-        raise HTTPException(
-            status_code=429,
-            detail=f"Rate limit exceeded. Maximum {RATE_LIMIT_REQUESTS} requests per {RATE_LIMIT_WINDOW} seconds."
-        )
-    
+async def chat(req: ChatRequest):
     message    = req.message.strip()
     client_id  = req.client_id or "default"
     session_id = req.session_id or "anonymous"
